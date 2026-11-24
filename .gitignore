@@ -1,6 +1,8 @@
 .env
+.env.*
 .venv/
 storage/
+apify_storage/
 output*/
 
 # Python / pytest artifacts
@@ -8,6 +10,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 *.egg-info/
 dist/
 build/

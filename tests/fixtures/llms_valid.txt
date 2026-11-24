@@ -1,0 +1,13 @@
+# Example Docs
+
+> Fast reference documentation for AI search assistants and developer tools.
+
+## Getting Started
+
+- [Quickstart](https://example.com/docs/quickstart): Install and run in 2 minutes.
+- [API Reference](https://example.com/docs/api): Endpoint schemas and authentication.
+
+## Guides
+
+- [Sitemap Auditing](https://example.com/docs/sitemap): Indexability best practices.
+![Logo](https://example.com/logo.png)

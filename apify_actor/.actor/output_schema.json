@@ -1,0 +1,17 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Sitemap Extractor & Indexability Auditor Output",
+  "type": "object",
+  "properties": {
+    "overview": {
+      "type": "string",
+      "title": "Audit Overview (Domain Summaries & URL Records)",
+      "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+    },
+    "summary": {
+      "type": "string",
+      "title": "Full Run Summary JSON (Key-Value Store)",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/SUMMARY"
+    }
+  }
+}

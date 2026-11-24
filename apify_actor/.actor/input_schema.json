@@ -1,0 +1,111 @@
+{
+  "title": "Sitemap Extractor & Indexability Auditor Input",
+  "description": "Extract Sitemap URLs fast without proxies and audit HTTP status, redirect chains, robots.txt conflicts, noindex tags, canonicals, SEO/JSON-LD, AI search bots, and /llms.txt.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "Start URLs (Domains or Sitemaps)",
+      "type": "array",
+      "description": "Domain root URLs (e.g. https://www.sitemaps.org) or explicit Sitemap URLs (e.g. https://example.com/sitemap.xml). Also accepts Apify RequestList objects ({ \"url\": \"...\" }) via API.",
+      "editor": "stringList",
+      "prefill": ["https://www.sitemaps.org"],
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "mode": {
+      "title": "Audit mode",
+      "type": "string",
+      "description": "Choose between ultra-fast Sitemap extraction only, 4-point Indexability auditing, or full technical SEO + JSON-LD + AI crawler diagnostics.",
+      "editor": "select",
+      "enum": ["extract_only", "indexability_audit", "full_audit"],
+      "enumTitles": [
+        "Extract Sitemap URLs only (fastest)",
+        "Indexability audit (HTTP, redirects, robots, noindex, canonical)",
+        "Full audit (+ HTML SEO, JSON-LD, AI search bots, /llms.txt)"
+      ],
+      "default": "indexability_audit"
+    },
+    "maxUrlsPerDomain": {
+      "title": "Max URLs per domain",
+      "type": "integer",
+      "description": "Maximum unique URLs extracted and emitted per domain from discovered Sitemaps.",
+      "editor": "number",
+      "default": 500,
+      "minimum": 1,
+      "maximum": 50000
+    },
+    "maxAuditPagesPerDomain": {
+      "title": "Max audit pages per domain",
+      "type": "integer",
+      "description": "Maximum URLs to fetch and audit per domain (automatically treated as 0 in extract_only mode).",
+      "editor": "number",
+      "default": 50,
+      "minimum": 0,
+      "maximum": 2000
+    },
+    "includeAiBotAudit": {
+      "title": "Include AI search bot & /llms.txt audit",
+      "type": "boolean",
+      "description": "Compare desktop browser reachability against OAI-SearchBot, GPTBot, ClaudeBot, Claude-SearchBot, and PerplexityBot on the domain root, and inspect /llms.txt (skipped in extract_only mode).",
+      "default": true
+    },
+    "outputMode": {
+      "title": "Dataset output mode",
+      "type": "string",
+      "description": "Choose whether to write domain summaries, URL rows, or both to the default Dataset. Key-Value Store record SUMMARY is always saved.",
+      "editor": "select",
+      "enum": ["both", "urls_only", "summary_only"],
+      "enumTitles": [
+        "Domain summaries and URL rows (both)",
+        "URL rows only (SUMMARY still saved to KVS)",
+        "Domain summaries only"
+      ],
+      "default": "both"
+    },
+    "maxSitemapFiles": {
+      "sectionCaption": "Advanced & Proxy Settings",
+      "sectionDescription": "Control Sitemap recursion limits, HTTP concurrency, issue-only Dataset filtering, and optional proxy escalation.",
+      "title": "Max Sitemap files per domain",
+      "type": "integer",
+      "description": "Maximum number of Sitemap files (including nested sitemapindex children) fetched per domain.",
+      "editor": "number",
+      "default": 30,
+      "minimum": 1,
+      "maximum": 200
+    },
+    "concurrency": {
+      "title": "HTTP concurrency per domain",
+      "type": "integer",
+      "description": "Maximum simultaneous HTTP requests per domain.",
+      "editor": "number",
+      "default": 5,
+      "minimum": 1,
+      "maximum": 15
+    },
+    "onlyIssuesInDataset": {
+      "title": "Output only URLs with issues",
+      "type": "boolean",
+      "description": "When enabled, only URL records with at least one detected issue are pushed to the Dataset (noise reduction mode).",
+      "default": false
+    },
+    "autoEscalateProxy": {
+      "title": "Auto-escalate to Apify Proxy on block",
+      "type": "boolean",
+      "description": "Start with free direct HTTP requests and automatically escalate to Apify Proxy only if HTTP 403/429/503 or a WAF challenge is detected.",
+      "default": true
+    },
+    "proxyConfiguration": {
+      "title": "Proxy configuration",
+      "type": "object",
+      "description": "Optional Apify Proxy settings. Disabled by default for fast, zero-proxy operation.",
+      "editor": "proxy",
+      "default": {
+        "useApifyProxy": false
+      }
+    }
+  },
+  "required": ["startUrls"]
+}

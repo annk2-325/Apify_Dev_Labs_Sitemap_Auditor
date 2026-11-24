@@ -1,0 +1,65 @@
+{
+  "actorSpecification": 1,
+  "name": "sitemap-extractor-indexability-auditor",
+  "title": "Sitemap Extractor & Indexability Auditor — Fast, No Proxy, Broken Links & AI Bots",
+  "description": "Fast, proxy-free Sitemap extractor (XML, nested index, .xml.gz, plain text, broken XML recovery) with 4-point Indexability audit (HTTP/redirects, robots.txt, noindex, 5-way canonical), AI search bot reachability diff (GPTBot/ClaudeBot/PerplexityBot), and /llms.txt diagnostics in 512 MB.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "dockerfile": "../Dockerfile",
+  "dockerContextDir": "../..",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "minMemoryMbytes": 256,
+  "defaultRunOptions": {
+    "build": "latest",
+    "timeoutSecs": 180,
+    "memoryMbytes": 512
+  },
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "record_type",
+              "domain",
+              "url",
+              "http_status",
+              "indexable",
+              "canonical_status",
+              "health_score",
+              "issue_codes",
+              "issue_severities",
+              "redirect_hops",
+              "robots_allowed",
+              "noindex",
+              "canonical_url",
+              "elapsed_ms"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "record_type": { "label": "Type", "format": "text" },
+              "domain": { "label": "Domain", "format": "text" },
+              "url": { "label": "URL", "format": "link" },
+              "http_status": { "label": "HTTP", "format": "number" },
+              "indexable": { "label": "Indexable", "format": "boolean" },
+              "canonical_status": { "label": "Canonical Status", "format": "text" },
+              "health_score": { "label": "Health Score", "format": "number" },
+              "issue_codes": { "label": "Issue Codes", "format": "array" },
+              "issue_severities": { "label": "Severities", "format": "array" },
+              "redirect_hops": { "label": "Redirects", "format": "number" },
+              "robots_allowed": { "label": "Robots Allowed", "format": "boolean" },
+              "noindex": { "label": "Noindex", "format": "boolean" },
+              "canonical_url": { "label": "Canonical URL", "format": "link" },
+              "elapsed_ms": { "label": "Elapsed (ms)", "format": "number" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# Apify SDK + pure-Python core dependencies
+apify>=2.0.0,<4.0.0
+httpx[http2]>=0.27.0,<1.0.0
+lxml>=5.0.0,<6.0.0
+protego>=0.6.2,<1.0.0
+pydantic>=2.0.0,<3.0.0

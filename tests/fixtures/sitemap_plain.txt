@@ -1,0 +1,6 @@
+https://example.com/
+https://example.com/about
+https://example.com/about#dup
+https://blog.example.com/cross-host-article
+
+https://example.com/pricing

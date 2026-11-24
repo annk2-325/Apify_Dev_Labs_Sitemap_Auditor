@@ -1,0 +1,19 @@
+# Standard robots.txt fixture for RFC 9309 & AI bot rules
+User-agent: *
+Disallow: /admin/
+Allow: /admin/public/
+Disallow: /private-page
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /docs/proprietary/
+
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://example.com/sitemap_index.xml
+Sitemap: /extra-sitemap.xml
+Sitemap: https://example.com/sitemap_index.xml
+Sitemap: file:///etc/passwd
