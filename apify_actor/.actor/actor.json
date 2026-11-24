@@ -1,7 +1,7 @@
 {
   "actorSpecification": 1,
   "name": "sitemap-extractor-indexability-auditor",
-  "title": "Sitemap Extractor & Indexability Auditor — Fast, No Proxy, Broken Links & AI Bots",
+  "title": "Sitemap Extractor & Indexability Auditor (No Proxy & AI Bots)",
   "description": "Fast, proxy-free Sitemap extractor (XML, nested index, .xml.gz, plain text, broken XML recovery) with 4-point Indexability audit (HTTP/redirects, robots.txt, noindex, 5-way canonical), AI search bot reachability diff (GPTBot/ClaudeBot/PerplexityBot), and /llms.txt diagnostics in 512 MB.",
   "version": "0.1",
   "buildTag": "latest",
